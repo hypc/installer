@@ -18,7 +18,7 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 sudo sed -i 's/[a-z]*.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 sudo apt-get update && sudo apt-get install -y build-essential git vim tree cmatrix
 
-softs=(vim nginx nodejs pyenv redis memcached postgresql mongodb docker)
+softs=(vim nginx nvm pyenv redis memcached postgresql mongodb docker)
 for soft in ${softs[*]}; do
     echo -ne "\033[31m"
     read -p "Do you want install $soft? [Y/N] " q
