@@ -12,13 +12,14 @@ alias curli='curl -i'
 alias curlw='curl -i -w "\n\n----------------\ntime_connect: %{time_connect}\ntime_starttransfer: %{time_starttransfer}\ntime_total: %{time_total}\n"'
 alias grep='grep --color=auto'
 alias pythonserver='python -m SimpleHTTPServer'
+alias ssh_tunnel='ssh -qtnN -D 0.0.0.0:7070 root@45.77.101.132'
 EOF
 
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 sudo sed -i 's/[a-z]*.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 sudo apt-get update && sudo apt-get install -y build-essential git vim tree cmatrix
 
-softs=(vim nginx nvm pyenv redis memcached postgresql mongodb docker)
+softs=(vim nginx nvm pyenv redis memcached postgresql mongodb docker chrome)
 for soft in ${softs[*]}; do
     echo -ne "\033[31m"
     read -p "Do you want install $soft? [Y/N] " q
