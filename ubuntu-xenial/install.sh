@@ -16,7 +16,7 @@ alias ssh_tunnel='ssh -qtnN -D 0.0.0.0:7070 root@45.77.101.132'
 EOF
 
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-sudo sed -i 's/[a-z]*.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+sudo sed -i 's/[a-z1-9.-]*.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 sudo apt-get update && sudo apt-get install -y build-essential git vim tree cmatrix
 
 softs=(vim nginx nvm pyenv redis memcached postgresql mongodb docker chrome java)
