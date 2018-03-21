@@ -22,9 +22,9 @@ sudo apt-get update && sudo apt-get install -y build-essential git vim tree cmat
 softs=(vim nginx nvm chrome pyenv redis memcached postgresql mongodb docker java)
 for soft in ${softs[*]}; do
     echo -ne "\033[31m"
-    read -p "Do you want install $soft? [Y/N] " q
+    read -p "Do you want install $soft? [Y/N] (default: N) " q
     echo -ne "\033[0m"
-    if test "$q" == "" -o "$q" == "y" -o "$q" == "Y"; then
+    if test -o "$q" == "y" -o "$q" == "Y"; then
         bash ./softs/$soft.sh
     fi
     echo
