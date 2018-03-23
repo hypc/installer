@@ -12,6 +12,7 @@ Description=IntelliJIDEALicenseServer
 
 [Service]
 ExecStart=/usr/local/bin/IntelliJIDEALicenseServer -p 1234 -u $(basename $HOME)
+Restart=on-failure
 EOF
 
 sudo systemctl enable IntelliJIDEALicenseServer.service
