@@ -9,7 +9,8 @@ sudo chmod a+x /usr/local/bin/IntelliJIDEALicenseServer
 sudo tee /etc/systemd/system/IntelliJIDEALicenseServer.service <<EOF
 [Unit]
 Description=IntelliJIDEALicenseServer
-After=network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 ExecStart=/usr/local/bin/IntelliJIDEALicenseServer -p 1234 -u $(basename $HOME)
