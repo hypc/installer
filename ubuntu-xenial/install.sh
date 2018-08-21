@@ -15,6 +15,8 @@ alias pythonserver='python -m SimpleHTTPServer'
 alias ssh_tunnel='ssh -qtnN -D 0.0.0.0:7070 root@45.77.101.132'
 alias timestamp='date +%s'
 alias timestamp16='echo "obase=16;$(date +%s)" | bc | tr "[:upper:]" "[:lower:]"'
+HISTCONTROL=ignorespace:erasedups
+HISTTIMEFORMAT="%F %T "
 EOF
 
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
