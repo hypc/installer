@@ -1,10 +1,14 @@
 #!/bin/bash
 
 cat <<"EOF">> $PROFILE
+export TERM="xterm-color"
+PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\$ '
+
 alias ls='ls -G'
-alias l='ls -aF'
+alias l='ls -lF'
 alias ll='ls -alF'
 alias lh='ls -alFh'
+alias mkdir='mkdir -p'
 alias tree='tree -CF'
 alias treel='tree -alF'
 alias tailf='tail -f'
@@ -16,6 +20,29 @@ alias timestamp='date +%s'
 alias timestamp16='echo "obase=16;$(date +%s)" | bc | tr "[:upper:]" "[:lower:]"'
 HISTCONTROL=ignorespace:erasedups
 HISTTIMEFORMAT="%F %T "
+function cd(){ command cd "$@"; l; }
+alias ~='cd ~'
+alias cd..='cd ../'
+alias ..='cd ../'
+alias ...='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
+alias .6='cd ../../../../../../'
+
+alias which='type -all'
+alias path='echo -e ${PATH//:/\\n}'
+trash () { command mv "$@" ~/.Trash ; }
+alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
+alias memHogsTop='top -l 1 -o rsize | head -20'
+alias memHogsPs='ps wwaxm -o pid,stat,vsize,rss,time,command | head -10'
+alias cpuHogsPs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
+alias ttop='top -R -F -s 10 -o rsize'
+EOF
+tee ~/.inputrc <<EOF
+set completion-ignore-case on
+set show-all-if-ambiguous on
+TAB: menu-complete
 EOF
 tee ~/.gitconfig <<EOF
 [alias]
