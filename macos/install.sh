@@ -1,10 +1,23 @@
 #!/bin/bash
 
 cat <<"EOF">> $PROFILE
-export TERM="xterm-color"
-PS1='\[\e[0;33m\e[1m\]\u\[\e[0m\]@\[\e[0;32m\e[1m\]\h\[\e[0m\]:\[\e[0;34m\e[1m\]\w\[\e[0m\]\$ '
-HISTCONTROL=ignorespace:erasedups
-HISTTIMEFORMAT="%F %T "
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export TERM=xterm-color
+__ps(){
+    local none="\[\e[0m\]"
+    local c31="\[\e[1;31m\]"
+    local c32="\[\e[1;32m\]"
+    local c33="\[\e[1;33m\]"
+    local c34="\[\e[1;34m\]"
+
+    if test $1 = 1; then echo "\n$c32\u@\h $c33\w$c34 ➜  $none"; fi
+    if test $2 = 2; then echo "$c31> $none"; fi
+}
+export PS1=$(__ps 1)
+export PS2=$(__ps 2)
+export HISTCONTROL=ignorespace:erasedups
+export HISTTIMEFORMAT="%F %T "
 
 alias ls='ls -G'
 alias l='ls -lF'
@@ -20,7 +33,7 @@ alias grep='grep --color=auto'
 alias pythonserver='python -m SimpleHTTPServer'
 alias timestamp='date +%s'
 alias timestamp16='echo "obase=16;$(date +%s)" | bc | tr "[:upper:]" "[:lower:]"'
-function cd(){ command cd "$@"; l; }
+cd(){ command cd "$@"; test $? = 0 && l; }
 alias ~='cd ~'
 alias cd..='cd ../'
 alias ..='cd ../'
