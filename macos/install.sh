@@ -4,18 +4,7 @@ cat <<"EOF">> $PROFILE
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export TERM=xterm-color
-__ps(){
-    local none="\[\e[0m\]"
-    local c31="\[\e[1;31m\]"
-    local c32="\[\e[1;32m\]"
-    local c33="\[\e[1;33m\]"
-    local c34="\[\e[1;34m\]"
-
-    if test $1 = 1; then echo "\n$c32\u@\h $c33\w$c34 ➜  $none"; fi
-    if test $2 = 2; then echo "$c31> $none"; fi
-}
-export PS1=$(__ps 1)
-export PS2=$(__ps 2)
+export PS1="\u@\h \w \$ "
 export HISTCONTROL=ignorespace:erasedups
 export HISTTIMEFORMAT="%F %T "
 
@@ -46,8 +35,8 @@ alias .6='cd ../../../../../../'
 alias which='type -all'
 alias path='echo -e ${PATH//:/\\n}'
 trash () { command mv "$@" ~/.Trash ; }
-alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
-alias memHogsTop='top -l 1 -o rsize | head -20' 
+alias cleanupDS='find . -maxdepth 3 -type f -name *.DS_Store -ls -delete'
+alias memHogsTop='top -l 1 -o rsize | head -20'
 alias memHogsPs='ps wwaxm -o pid,stat,vsize,rss,time,command | head -10'
 alias cpuHogsPs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 alias ttop='top -R -F -s 10 -o rsize'
