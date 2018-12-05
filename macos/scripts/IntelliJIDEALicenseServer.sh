@@ -9,7 +9,7 @@ if -f ~/Library/LaunchAgents/IntelliJIDEALicenseServer.plist; then
     exit 0
 fi
 
-cp ./assets/IntelliJIDEALicenseServer_darwin_amd64 /usr/local/bin/IntelliJIDEALicenseServer
+cp ../assets/IntelliJIDEALicenseServer/IntelliJIDEALicenseServer_darwin_amd64 /usr/local/bin/IntelliJIDEALicenseServer
 tee ~/Library/LaunchAgents/IntelliJIDEALicenseServer.plist <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

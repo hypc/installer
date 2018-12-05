@@ -4,7 +4,7 @@
 # ### This script can only activate JetBrains2017.2 series. ###
 # #############################################################
 
-sudo wget -O /usr/local/bin/IntelliJIDEALicenseServer https://oe5hf47m4.qnssl.com/IntelliJIDEALicenseServer/2017.2/IntelliJIDEALicenseServer_linux_amd64
+cp ../assets/IntelliJIDEALicenseServer/IntelliJIDEALicenseServer_linux_amd64 /usr/local/bin/IntelliJIDEALicenseServer
 sudo chmod a+x /usr/local/bin/IntelliJIDEALicenseServer
 sudo tee /etc/systemd/system/IntelliJIDEALicenseServer.service <<EOF
 [Unit]
