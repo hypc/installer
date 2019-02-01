@@ -76,5 +76,5 @@ if test "$?" != "0"; then
         echo "brew安装失败"
         exit 1
     fi
-    brew install tree cmatrix
+    brew install tree cmatrix screenfetch
 fi

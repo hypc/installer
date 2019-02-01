@@ -21,7 +21,7 @@ EOF
 
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 sudo sed -i 's/[a-z1-9.-]*.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
-sudo apt-get update && sudo apt-get install -y build-essential git vim tree cmatrix curl wget
+sudo apt-get update && sudo apt-get install -y build-essential git vim tree cmatrix curl wget screenfetch
 
 softs=(vim nginx nvm chrome pyenv redis memcached postgresql mongodb docker java)
 for soft in ${softs[*]}; do
