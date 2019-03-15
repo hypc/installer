@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if -d ~/.pyenv; then
+if test -d ~/.pyenv; then
     echo 'pyenv already installed'
     exit 0
 fi

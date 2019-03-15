@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat <<"EOF">> $PROFILE
+grep timestamp16 ~/.profile >> /dev/null || cat <<"EOF">> ~/.profile
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export TERM=xterm-color
@@ -55,6 +55,7 @@ tee ~/.gitconfig <<EOF
     ca="commit --amend"
     ac="!git add . && git commit"
     acm="!git add . && git commit -m"
+    last="log --stat --abbrev-commit -1"
     l="log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'"
     ll="log --stat --abbrev-commit"
     lg="log --color --graph --pretty=format:'%C(bold white)%h%Creset -%C(bold green)%d%Creset %s %C(bold green)(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
@@ -76,5 +77,14 @@ if test "$?" != "0"; then
         echo "brew安装失败"
         exit 1
     fi
-    brew install tree cmatrix screenfetch
+    brew install git tree cmatrix screenfetch
 fi
+
+for soft in $(ls scripts); do
+    soft=$(echo $soft | cut -d'.' -f1)
+    read -p "Do you want install $soft?[Y/N, default Y] " choice
+    if test "$choice" = "" -o "$choice" = "Y" -o "$choice" = "y"; then
+        echo $soft
+        # bash "scripts/$soft.sh"
+    fi
+done

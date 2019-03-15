@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if -d ~/.vim; then
+if test -d ~/.vim; then
     echo 'vim already installed'
     exit 0
 fi

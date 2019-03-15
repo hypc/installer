@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if test -d "/Applications/Visual Studio Code.app"; then
-    echo 'vscode already installed'
+    echo 'VSCode already installed'
     exit 0
 fi
 

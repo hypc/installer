@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if test -d "/Applications/Google Chrome.app"; then
-    echo 'chrome already installed'
+    echo 'Chrome already installed'
     exit 0
 fi
 
