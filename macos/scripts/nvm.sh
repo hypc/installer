@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if -d ~/.nvm; then
+if test -d ~/.nvm; then
     echo 'nvm already installed'
     exit 0
 fi
